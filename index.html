@@ -1,0 +1,96 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dragón Dorado - 金泰源</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      height: 100vh;
+      overflow: hidden;
+      font-family: "MS Gothic", monospace;
+    }
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      max-width: 200px;
+      height: auto;
+      transform: translateY(30px); /* mueve la imagen 50px hacia abajo */
+    }
+    .texto-chino {
+      position: absolute;
+      top: 40px;
+      left: 200px;
+      font-size: 64px;
+      font-weight: bold;
+      color: gold;
+      -webkit-text-stroke: 1px red; /* borde delgado rojo */
+      text-stroke: 1px red;
+    }
+
+    .texto-latino {
+      position: absolute;
+      top: 120px; /* justo debajo del texto chino */
+      left: 100px;
+      font-size: 36px;
+      font-family: "Bradley Hand ITC", "Comic Sans MS", cursive;
+      color: red;
+      letter-spacing: 4px;
+    }
+
+    /* Estilo del menú */
+    nav {
+      position: absolute;
+      top: 180px; /* debajo del texto latino */
+      right: 30px;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 30px; /* espacio entre los elementos del menú */
+      justify-content: flex-end; /* alineación hacia la derecha */
+    }
+
+    nav ul li {
+      font-family: "Mongolian Baiti", serif;
+      font-size: 12px;
+    }
+
+    nav ul li a {
+      color: red;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: gold; /* cambio de color al pasar el mouse */
+    }
+  </style>
+</head>
+<body>
+  <img src="Dragon.png" alt="Dragón dorado">
+  <div class="texto-chino">金 泰 源</div>
+  <div class="texto-latino">JIN TAI YUAN</div>
+
+  <!-- Línea invisible sobre el menú -->
+  <div class="linea-menu"></div>
+ 
+  <!-- Menú horizontal debajo del texto latino -->
+  <nav>
+    <ul>
+      <li><a href="#">INICIO</a></li>
+      <li><a href="#">SERVICIOS</a></li>
+      <li><a href="#">¿QUIENES SOMOS?</a></li>
+      <li><a href="#">CONTACTO</a></li>
+      <li><a href="#">GALERÍA</a></li>
+    </ul>
+  </nav>
+</body>
+</html>
