@@ -13,6 +13,7 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
 }
 
 body{
@@ -72,8 +73,6 @@ height:3px;
 background:white;
 }
 
-/* ===== MOBILE MENU ===== */
-
 .mobile-menu{
 display:none;
 flex-direction:column;
@@ -112,7 +111,7 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.5);
+background:rgba(0,0,0,0.6);
 }
 
 .hero-content{
@@ -130,38 +129,36 @@ margin-top:15px;
 font-size:18px;
 }
 
+/* ===== SECTIONS ===== */
+
+.section{
+padding:100px 20px;
+max-width:1000px;
+margin:auto;
+}
+
+.section h2{
+text-align:center;
+margin-bottom:30px;
+color:#111;
+}
+
+.section p{
+margin-bottom:20px;
+line-height:1.7;
+}
+
 /* ===== FOOTER ===== */
 
 footer{
 background:#111;
 color:#ccc;
-padding:40px 20px;
+padding:30px 20px;
 text-align:center;
 }
 
-footer h3{
-color:white;
-margin-bottom:15px;
-}
-
-.footer-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:30px;
-max-width:1000px;
-margin:auto;
-margin-bottom:30px;
-}
-
-footer a{
-color:#ccc;
-text-decoration:none;
-display:block;
+footer p{
 margin:5px 0;
-}
-
-footer a:hover{
-color:#caa85c;
 }
 
 /* ===== RESPONSIVE ===== */
@@ -185,7 +182,6 @@ font-size:32px;
 }
 
 }
-
 </style>
 </head>
 
@@ -195,10 +191,10 @@ font-size:32px;
 <div class="logo">JIN-TAI-YUAN</div>
 
 <div class="menu">
-<a href="#">Inicio</a>
-<a href="#">Productos</a>
-<a href="#">Servicios</a>
-<a href="#">Contacto</a>
+<a href="#inicio">Inicio</a>
+<a href="#quienes">Quiénes Somos</a>
+<a href="#productos">Productos</a>
+<a href="#servicios">Servicios</a>
 </div>
 
 <div class="hamburger" onclick="toggleMenu()">
@@ -209,47 +205,60 @@ font-size:32px;
 </div>
 
 <div class="mobile-menu" id="mobileMenu">
-<a href="#" onclick="closeMenu()">Inicio</a>
-<a href="#" onclick="closeMenu()">Productos</a>
-<a href="#" onclick="closeMenu()">Servicios</a>
-<a href="#" onclick="closeMenu()">Contacto</a>
+<a href="#inicio" onclick="closeMenu()">Inicio</a>
+<a href="#quienes" onclick="closeMenu()">Quiénes Somos</a>
+<a href="#productos" onclick="closeMenu()">Productos</a>
+<a href="#servicios" onclick="closeMenu()">Servicios</a>
 </div>
 
-<section class="hero">
+<section class="hero" id="inicio">
 <div class="hero-content">
 <h1>JIN-TAI-YUAN</h1>
-<p>Excelencia · Tradición · Innovación</p>
+<p>Comercio Internacional de Minerales · Chile - China</p>
 </div>
 </section>
 
-<footer>
-<div class="footer-grid">
-
-<div>
-<h3>JIN-TAI-YUAN</h3>
-<p>Compromiso con la calidad y la excelencia en cada proyecto.</p>
-</div>
-
-<div>
-<h3>Navegación</h3>
-<a href="#">Inicio</a>
-<a href="#">Productos</a>
-<a href="#">Servicios</a>
-<a href="#">Contacto</a>
-</div>
-
-<div>
-<h3>Contacto</h3>
-<p>Email: contacto@jintaiyuan.cl</p>
-<p>Teléfono: +56 9 0000 0000</p>
-<p>Chile</p>
-</div>
-
-</div>
-
-<p style="border-top:1px solid #333;padding-top:15px;">
-© 2026 JIN-TAI-YUAN. Todos los derechos reservados.
+<section class="section" id="quienes">
+<h2>Quiénes Somos</h2>
+<p>
+JIN-TAI-YUAN es una compañía de capitales de la República Popular China,
+establecida en Santiago de Chile, especializada en la adquisición,
+comercialización y exportación de minerales estratégicos.
 </p>
+<p>
+Nuestra empresa trabaja directamente con pequeños y medianos productores
+nacionales, promoviendo relaciones comerciales transparentes,
+seguras y de largo plazo.
+</p>
+<p>
+Actuamos como puente comercial entre Chile y China, facilitando
+la exportación directa de oro y concentrado de cobre hacia
+refinerías y plantas de procesamiento en Asia.
+</p>
+</section>
+
+<section class="section" id="productos">
+<h2>Productos</h2>
+<p><strong>Oro:</strong> Adquisición de oro metálico y doré proveniente de productores nacionales, bajo estrictos estándares de trazabilidad y cumplimiento normativo.</p>
+<p><strong>Concentrado de Cobre:</strong> Compra de concentrados de cobre provenientes de faenas de pequeña y mediana minería, con análisis y certificación técnica previa a exportación.</p>
+</section>
+
+<section class="section" id="servicios">
+<h2>Servicios</h2>
+<p>• Evaluación técnica y comercial de minerales.</p>
+<p>• Compra directa a productores nacionales.</p>
+<p>• Gestión logística y documental para exportación.</p>
+<p>• Coordinación con refinerías y compradores finales en China.</p>
+<p>• Asesoría en cumplimiento normativo y trazabilidad.</p>
+</section>
+
+<footer>
+  <div class="container">
+    © 2026 Comercial JIN-TAI-YUAN SpA.
+    <p>All rights reserved</p>
+    <p>This site has been developed by</p>
+    <p><strong>SIMA Ingeniería informática SpA.</strong></p>
+  </div>
 </footer>
 
 <script>
@@ -266,5 +275,3 @@ document.getElementById("mobileMenu").classList.remove("active");
 
 </body>
 </html>
-
-
