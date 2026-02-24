@@ -48,6 +48,8 @@ font-size:22px;
 letter-spacing:3px;
 }
 
+/* ===== MENU DESKTOP ===== */
+
 .menu{
 display:flex;
 gap:30px;
@@ -74,36 +76,69 @@ transition:0.3s;
 width:100%;
 }
 
-/* ===== MOBILE ===== */
+/* ===== HAMBURGER ===== */
 
 .hamburger{
 display:none;
 flex-direction:column;
-gap:5px;
+gap:6px;
 cursor:pointer;
+z-index:2100;
 }
 
-.hamburger div{
-width:25px;
+.hamburger span{
+width:28px;
 height:3px;
 background:white;
+transition:0.4s;
 }
 
+/* Animación a X */
+.hamburger.active span:nth-child(1){
+transform:rotate(45deg) translate(5px,5px);
+}
+
+.hamburger.active span:nth-child(2){
+opacity:0;
+}
+
+.hamburger.active span:nth-child(3){
+transform:rotate(-45deg) translate(6px,-6px);
+}
+
+/* ===== MOBILE MENU FULLSCREEN ===== */
+
 .mobile-menu{
-display:none;
-flex-direction:column;
-background:rgba(0,0,0,0.95);
-position:absolute;
-top:70px;
+position:fixed;
+top:0;
 left:0;
 width:100%;
-padding:20px;
+height:100vh;
+background:rgba(0,0,0,0.97);
+backdrop-filter:blur(8px);
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+gap:30px;
+transform:translateY(-100%);
+transition:0.5s ease;
+z-index:2000;
 }
 
 .mobile-menu a{
 color:white;
 text-decoration:none;
-padding:10px 0;
+font-size:22px;
+transition:0.3s;
+}
+
+.mobile-menu a:hover{
+color:#caa85c;
+}
+
+.mobile-menu.active{
+transform:translateY(0);
 }
 
 /* ===== HERO ===== */
@@ -166,7 +201,6 @@ transform 1.2s cubic-bezier(.17,.67,.83,.67),
 filter 1.2s ease;
 }
 
-/* Alternancia */
 .content-box.left{
 transform:translateX(-120px);
 }
@@ -218,7 +252,6 @@ to{opacity:1; transform:translateY(0);}
 
 .menu{display:none;}
 .hamburger{display:flex;}
-.mobile-menu.active{display:flex;}
 
 .hero h1{font-size:34px;}
 
@@ -249,10 +282,10 @@ transform:translateY(80px);
 <a href="#contacto">Contacto</a>
 </div>
 
-<div class="hamburger" onclick="toggleMenu()">
-<div></div>
-<div></div>
-<div></div>
+<div class="hamburger" id="hamburger" onclick="toggleMenu()">
+<span></span>
+<span></span>
+<span></span>
 </div>
 </div>
 
@@ -299,14 +332,14 @@ transform:translateY(80px);
 </section>
 
 <footer id="contacto">
-  <div class="container">
-    © 2026 Comercial JIN-TAI-YUAN SpA.
-    <p>All rights reserved</p>
-    <p>Contacto: Jorge Eyraud</p>
-    <p>Cel: +569 98563601</p>  
-    <p>This site has been developed by</p>
-    <p><strong>SIMA Ingeniería informática SpA.</strong></p>
-  </div>
+<div class="container">
+© 2026 Comercial JIN-TAI-YUAN SpA.
+<p>All rights reserved</p>
+<p>Contacto: Jorge Eyraud</p>
+<p>Cel: +569 98563601</p>
+<p>This site has been developed by</p>
+<p><strong>SIMA Ingeniería informática SpA.</strong></p>
+</div>
 </footer>
 
 <script>
@@ -317,27 +350,35 @@ let navbar = document.getElementById("navbar");
 navbar.classList.toggle("scrolled", window.scrollY > 50);
 });
 
-/* Animación profesional con IntersectionObserver */
+/* Animaciones profesionales */
 const observer = new IntersectionObserver((entries)=>{
 entries.forEach(entry=>{
 if(entry.isIntersecting){
 entry.target.classList.add("visible");
 }
 });
-},{
-threshold:0.3
-});
+},{threshold:0.3});
 
 document.querySelectorAll(".content-box").forEach(el=>{
 observer.observe(el);
 });
 
+/* Menu móvil premium */
 function toggleMenu(){
-document.getElementById("mobileMenu").classList.toggle("active");
+const menu = document.getElementById("mobileMenu");
+const burger = document.getElementById("hamburger");
+
+menu.classList.toggle("active");
+burger.classList.toggle("active");
+
+document.body.style.overflow =
+menu.classList.contains("active") ? "hidden" : "auto";
 }
 
 function closeMenu(){
 document.getElementById("mobileMenu").classList.remove("active");
+document.getElementById("hamburger").classList.remove("active");
+document.body.style.overflow="auto";
 }
 
 </script>
